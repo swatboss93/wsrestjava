@@ -5,10 +5,8 @@
  */
 package com.swatboss93.ws;
 
-import com.swatboss93.bd.Pizza;
 import com.swatboss93.bd.User;
 import com.swatboss93.bd.dao.ConexaoLocal;
-import com.swatboss93.bd.dao.PizzaDAO;
 import com.swatboss93.bd.dao.UserDAO;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -100,5 +98,20 @@ public class CrudResource {
         } catch (SQLException ex) {
             System.out.println("Delete user: " + ex.getMessage());
         }
+    }
+    
+    @Path("authenticate")
+    @POST
+    @Consumes("application/json")
+    public User authenticateUser(User user) {
+        System.out.println("AAAAE");
+        UserDAO userDAO = new UserDAO(new ConexaoLocal());
+        User userBD = new User();
+        try {
+            userBD = userDAO.authenticateUser(user);
+        } catch (SQLException ex) {
+            System.out.println("Authenticate user: " + ex.getMessage());
+        }
+        return userBD;
     }
 }

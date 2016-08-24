@@ -18,7 +18,7 @@ public class ConexaoLocal implements Conexao{
     public ConexaoLocal(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/peixe", "root", "1234");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/peixe", "root", "root");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         } catch (ClassNotFoundException ex) {

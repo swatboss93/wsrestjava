@@ -17,18 +17,19 @@ import java.util.List;
  * @author swatboss93
  */
 public class UserDAO {
+
     private Conexao con;
 
     public UserDAO(Conexao con) {
         this.con = con;
     }
-    
+
     public int CriaBanco() throws SQLException {
         PreparedStatement ps = con.getConexao().prepareStatement("CREATE DATABASE IF NOT EXISTS peixe;");
 
         return ps.executeUpdate();
     }
-    
+
     public int CriaTabelaUser() throws SQLException {
         PreparedStatement ps = con.getConexao().prepareStatement("CREATE TABLE IF NOT EXISTS User(id INTEGER NOT NULL AUTO_INCREMENT, name VARCHAR(30) NOT NULL, email VARCHAR(30) NOT NULL, password VARCHAR(30) NOT NULL, CONSTRAINT pk_user PRIMARY KEY (id));");
 
@@ -95,6 +96,25 @@ public class UserDAO {
         return ps.executeUpdate();
     }
 
+    public User authenticateUser(User user) throws SQLException {
+        PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM User WHERE email=?");
+        ps.setString(1, user.getEmail());
+
+        ResultSet rs = ps.executeQuery();
+
+        User userBD = new User();
+
+        while (rs.next()) {
+            userBD = loadObjects(rs);
+        }
+        if (userBD.getId() != 0) {
+            if (userBD.getPassword().equals(user.getPassword())) {
+                return userBD;
+            }
+        }
+        return new User();
+    }
+
     private User loadObjects(ResultSet rs) throws SQLException {
         User user = new User();
 
@@ -104,4 +124,5 @@ public class UserDAO {
         user.setPassword(rs.getString("password"));
         return user;
     }
+
 }
