@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.pucpcaldas.inf.pdm.bd.dao;
+package com.swatboss93.bd.dao;
 
-import br.pucpcaldas.inf.pdm.bd.Grupo;
-import br.pucpcaldas.inf.pdm.bd.Pizza;
+import com.swatboss93.bd.Grupo;
+import com.swatboss93.bd.Pizza;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

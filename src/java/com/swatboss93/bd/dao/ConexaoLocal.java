@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.pucpcaldas.inf.pdm.bd.dao;
+package com.swatboss93.bd.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -18,7 +18,7 @@ public class ConexaoLocal implements Conexao{
     public ConexaoLocal(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/pdm", "root", "1234");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/peixe", "root", "1234");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         } catch (ClassNotFoundException ex) {

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.pucpcaldas.inf.pdm.bd.dao;
+package com.swatboss93.bd.dao;
 
-import br.pucpcaldas.inf.pdm.bd.User;
+import com.swatboss93.bd.User;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -49,7 +49,7 @@ public class UserDAO {
         return user;
     }
 
-    public List<User> getUser() throws SQLException {
+    public List<User> getUsers() throws SQLException {
         List<User> lista = new ArrayList<>();
 
         PreparedStatement ps = con.getConexao().prepareStatement("SELECT * FROM User");

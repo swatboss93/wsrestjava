@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.pucpcaldas.inf.pdm.ws;
+package com.swatboss93.ws;
 
 import java.util.Set;
 import javax.ws.rs.core.Application;
@@ -29,7 +29,7 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(br.pucpcaldas.inf.pdm.ws.CrudResource.class);
+        resources.add(com.swatboss93.ws.CrudResource.class);
     }
     
 }
