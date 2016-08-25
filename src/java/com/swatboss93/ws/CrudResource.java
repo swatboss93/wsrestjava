@@ -66,26 +66,33 @@ public class CrudResource {
         return user;
     }
 
+    @Path("{id: [0-9]+}")
     @PUT
     @Consumes("application/json")
-    public void updateUser(User user) {
+    @Produces("application/json")
+    public User updateUser(User user) {
         UserDAO userDAO = new UserDAO(new ConexaoLocal());
         try {
             userDAO.updateUser(user);
         } catch (SQLException ex) {
             System.out.println("Update user: " + ex.getMessage());
         }
+        return user;
     }
     
     @POST
     @Consumes("application/json")
-    public void insertUser(User user) {
+    @Produces("application/json")
+    public User insertUser(User user) {
         UserDAO userDAO = new UserDAO(new ConexaoLocal());
         try {
             userDAO.insertUser(user);
+            user.setId(7);
         } catch (SQLException ex) {
             System.out.println("Insert user: " + ex.getMessage());
+            user.setId(0);
         }
+        return user;
     }
 
     @DELETE
